@@ -1,0 +1,11 @@
+version: '2'
+services:
+ postgres:
+   image: postgres:9.6
+   ports:
+     - "5432:5432"
+   environment:
+     - POSTGRES_DB=liquibase_example
+     - POSTGRES_USER=liquibase_example
+     - POSTGRES_PASSWORD=liquibase_example
+     - MAX_CONNECTIONS=300

@@ -18,7 +18,7 @@ data class Address(
     @GenericGenerator(name = "uuid", strategy = "org.hibernate.id.UUIDGenerator")
     val id: String = "",
 
-    val street: String,
+    val address: String,
 
     val city: String,
 
@@ -26,18 +26,16 @@ data class Address(
 
     val number: String,
 
-    val zipCode: String,
+    val zipCode: String? = null,
 
-    val district: String,
+    val district: String? = null,
 
     val state: String,
 
-    val complement: String,
-
-    val address: String,
+    val complement: String? = null,
 
     @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "person_id")
     val person: Person
-)
+): DBEntity()

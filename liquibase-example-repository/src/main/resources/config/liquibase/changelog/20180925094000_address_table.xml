@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+    <changeSet id="20180925094000-1" author="ricardo.borges">
+        <createTable tableName="address">
+            <column name="id" type="java.sql.Types.VARCHAR">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+
+            <column name="person_id" type="java.sql.Types.VARCHAR">
+                <constraints nullable="false" unique="true"/>
+            </column>
+
+            <column name="address" type="java.sql.Types.VARCHAR">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="city" type="java.sql.Types.VARCHAR">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="country" type="java.sql.Types.VARCHAR">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="number" type="java.sql.Types.VARCHAR">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="zip_code" type="java.sql.Types.VARCHAR">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="district" type="java.sql.Types.VARCHAR">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="state" type="java.sql.Types.VARCHAR">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="complement" type="java.sql.Types.VARCHAR">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="created_at" type="java.sql.Types.TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="updated_at" type="java.sql.Types.TIMESTAMP">
+                <constraints nullable="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="20180925094000-2" author="ricardo.borges">
+        <addForeignKeyConstraint baseColumnNames="person_id" baseTableName="address"
+                                 constraintName="fk_person_id" deferrable="false" initiallyDeferred="false"
+                                 onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id"
+                                 referencedTableName="person"/>
+    </changeSet>
+
+</databaseChangeLog>

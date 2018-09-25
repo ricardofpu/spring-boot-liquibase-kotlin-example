@@ -31,12 +31,11 @@
         <kotlin.version>1.2.60</kotlin.version>
 
         <!--SPRING-->
-        <spring.boot.version>1.5.3.RELEASE</spring.boot.version>
+        <spring.boot.version>2.0.5.RELEASE</spring.boot.version>
 
         <!--COMMONS-->
         <commons.lang3.version>3.5</commons.lang3.version>
         <jackson.version>2.9.2</jackson.version>
-        <log4j.version>2.6.2</log4j.version>
 
         <!--DB-->
         <hikari.cp.version>2.6.1</hikari.cp.version>
@@ -94,6 +93,14 @@
 
             <dependency>
                 <groupId>${project.groupId}</groupId>
+                <artifactId>liquibase-example-model</artifactId>
+                <type>test-jar</type>
+                <version>${project.version}</version>
+                <scope>test</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>${project.groupId}</groupId>
                 <artifactId>liquibase-example-repository</artifactId>
                 <version>${project.version}</version>
             </dependency>
@@ -120,12 +127,6 @@
                         <artifactId>servlet-api</artifactId>
                     </exclusion>
                 </exclusions>
-            </dependency>
-
-            <dependency>
-                <groupId>org.apache.logging.log4j</groupId>
-                <artifactId>log4j-core</artifactId>
-                <version>${log4j.version}</version>
             </dependency>
 
             <dependency>
@@ -261,6 +262,5 @@
             <url>https://repo.spring.io/libs-release</url>
         </pluginRepository>
     </pluginRepositories>
-
 
 </project>
