@@ -96,7 +96,7 @@ Use below commands to build the project and running tests
     mvn clean install
 ```
 
-After each test, we are deleting all rows from tables through the configuration made in `RepositoryBaseTest.kt`. See below
+>**Note**: After each test, we are deleting all rows from tables through the configuration made in `RepositoryBaseTest.kt`. See below
 
 ```kotlin
 @RunWith(SpringRunner::class)
@@ -112,6 +112,6 @@ abstract class RepositoryBaseTest
 
 ## Documentation
 https://spring.io/  
-http://www.liquibase.org/ 
-http://kotlinlang.org/ 
+http://www.liquibase.org/  
+http://kotlinlang.org/  
 https://docs.docker.com/compose/
