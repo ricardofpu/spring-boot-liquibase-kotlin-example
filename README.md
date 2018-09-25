@@ -70,7 +70,7 @@ spring.liquibase.change-log=classpath:config/liquibase/master.xml
 spring.liquibase.default-schema=public
 ```
 
-## Kotlin Datasource
+## Datasource
 ```kotlin
 @Configuration
 @ComponentScan(basePackages = ["br.com.spring.boot.liquibase.kotlin.example"])
@@ -85,8 +85,8 @@ open class RepositoryConfig {
 }
 ```
 
-## Running (linux)
-Use above commands to build the project and running tests
+## Running tests
+Use below commands to build the project and running tests
 
 ```
     docker-compose up
@@ -112,6 +112,6 @@ abstract class RepositoryBaseTest
 
 ## Documentation
 https://spring.io/  
-http://www.liquibase.org/
-http://kotlinlang.org/
+http://www.liquibase.org/ 
+http://kotlinlang.org/ 
 https://docs.docker.com/compose/
