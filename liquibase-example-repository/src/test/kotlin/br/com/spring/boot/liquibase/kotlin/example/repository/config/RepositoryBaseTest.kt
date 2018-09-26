@@ -1,6 +1,8 @@
 package br.com.spring.boot.liquibase.kotlin.example.repository.config
 
+import br.com.spring.boot.liquibase.kotlin.example.model.dummyAddress
 import br.com.spring.boot.liquibase.kotlin.example.model.dummyPerson
+import br.com.spring.boot.liquibase.kotlin.example.model.entity.Address
 import br.com.spring.boot.liquibase.kotlin.example.model.entity.Person
 import br.com.spring.boot.liquibase.kotlin.example.repository.AddressRepository
 import br.com.spring.boot.liquibase.kotlin.example.repository.PersonRepository
@@ -33,6 +35,13 @@ abstract class RepositoryBaseTest {
         val person = dummyPerson()
 
         val saved = personRepository.save(person)
+        assertNotNull(saved)
+
+        return saved
+    }
+
+    protected fun createAddress(address: Address = dummyAddress()): Address {
+        val saved = addressRepository.save(address)
         assertNotNull(saved)
 
         return saved

@@ -13,15 +13,11 @@ class AddressRepositoryTest : RepositoryBaseTest() {
     @Test
     fun `should save address and then find by id`() {
         val person = createPerson()
+        val address = createAddress(dummyAddress(person = person))
 
-        val address = dummyAddress(person = person)
-
-        val saved = addressRepository.save(address)
-        assertNotNull(saved)
-
-        val find = addressRepository.findById(saved.id).get()
+        val find = addressRepository.findById(address.id).get()
         assertNotNull(find)
-        assertEquals(saved.id, find.id)
+        assertEquals(address.id, find.id)
         assertEquals(address.address, find.address)
         assertEquals(address.city, find.city)
         assertEquals(address.country, find.country)
@@ -33,8 +29,56 @@ class AddressRepositoryTest : RepositoryBaseTest() {
         assertNotNull(find.createdAt)
     }
 
+    @Test
     fun `shouldn't find address when not exists`() {
         val find = addressRepository.findById(randomUUID()).isPresent
         assertFalse(find)
     }
+
+    @Test
+    fun `should updated address`() {
+        val person = createPerson()
+        val address = createAddress(dummyAddress(person = person))
+
+        val saved = addressRepository.save(address)
+        assertNotNull(saved)
+
+        val updatedAddress = saved.copy(
+            address = "new address",
+            number = "500",
+            zipCode = "99999",
+            country = "New City",
+            state = "New state"
+        )
+        updatedAddress.createdAt = saved.createdAt
+
+        val updated = addressRepository.save(updatedAddress)
+
+        val find = addressRepository.findById(updated.id).get()
+        assertNotNull(find)
+        assertEquals(saved.id, find.id)
+        assertEquals(updatedAddress.address, find.address)
+        assertEquals(updatedAddress.city, find.city)
+        assertEquals(updatedAddress.country, find.country)
+        assertEquals(updatedAddress.number, find.number)
+        assertEquals(updatedAddress.state, find.state)
+        assertEquals(updatedAddress.complement, find.complement)
+        assertEquals(updatedAddress.zipCode, find.zipCode)
+        assertEquals(updatedAddress.district, find.district)
+        assertNotNull(find.createdAt)
+        assertNotNull(find.updatedAt)
+    }
+
+    @Test
+    fun `should delete address`() {
+        val person = createPerson()
+        val address = createAddress(dummyAddress(person = person))
+
+        val deleted = addressRepository.delete(address)
+        assertNotNull(deleted)
+
+        val find = addressRepository.findById(address.id).isPresent
+        assertFalse(find)
+    }
+
 }
