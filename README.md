@@ -1,6 +1,5 @@
 # Spring Boot and Liquibase example
 [![Build Status](https://travis-ci.org/ricardofpu/spring-boot-liquibase-kotlin-example.svg?branch=master)](https://travis-ci.org/ricardofpu/spring-boot-liquibase-kotlin-example)
-[![codecov](https://codecov.io/gh/ricardofpu/spring-boot-liquibase-kotlin-example/branch/master/graph/badge.svg)](https://codecov.io/gh/ricardofpu/spring-boot-liquibase-kotlin-example)
 
 This quickstart example let's show how to build Spring Boot Application using liquibase to database migration.
 
